@@ -8,6 +8,9 @@ hostnamectl set-hostname isp.au-team.irpo
 # Настрока часового пояса
 apt-get update && apt-get install -y chrony tzdata
 
+#Настройка chrony
+
+
 # Создаем директории для интерфейсов
 mkdir -p /etc/net/ifaces/{enp7s2,enp7s3}
 
