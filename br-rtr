@@ -1,98 +1,187 @@
 #!/bin/bash
+#
+# Скрипт автоматической настройки GRE-туннеля, OSPF (FRR), NAT и SSH-доступа
+# Для ALT Linux (etcnet, apt-get, systemd)
+#
+# Запускать от root: sudo bash setup.sh
+#
 
-# Настройка маршутизации
-sed -i "s/net.ipv4.ip_forward = 0/net.ipv4.ip_forward = 1/" "/etc/net/sysctl.conf"
+set -uo pipefail
 
-#Создание enp0s8
-mkdir -p /etc/net/ifaces/enp7s2
-cp -r /etc/net/ifaces/enp7s1/options /etc/net/ifaces/enp7s2/options
-echo "192.168.0.1/28" > /etc/net/ifaces/enp7s2/ipv4address
+# ============================
+#        ПЕРЕМЕННЫЕ
+# ============================
 
+# Внешний (uplink) интерфейс
+WAN_IFACE="enp7s1"
 
-# Создаем директорию и файлы конфигурации
-mkdir -p /etc/net/ifaces/tun0
+# Внутренний интерфейс (локальная сеть)
+LAN_IFACE="enp7s2"
+LAN_IP="192.168.0.1/28"
+LAN_NET="192.168.0.0/28"
 
-# Файл options
-cat > /etc/net/ifaces/tun0/options <<EOF
+# GRE-туннель
+TUN_IFACE="tun0"
+TUN_LOCAL="172.16.2.2"
+TUN_REMOTE="172.16.1.2"
+TUN_IP="10.10.10.2/30"
+TUN_NET="10.10.10.0/30"
+OSPF_KEY="P@ssw0rd"
+
+# NAT / DNAT
+DNAT_PORT="2027"
+DNAT_TARGET="192.168.0.2:2027"
+
+# Пользователь
+NEW_USER="net_admin"
+NEW_USER_PASS="P@ssw0rd"
+SSH_PORT="2027"
+
+# ============================
+#        ФУНКЦИИ
+# ============================
+
+log() {
+    echo -e "\e[32m[+] $1\e[0m"
+}
+
+err() {
+    echo -e "\e[31m[!] $1\e[0m" >&2
+}
+
+check_root() {
+    if [[ "$EUID" -ne 0 ]]; then
+        err "Скрипт нужно запускать от root!"
+        exit 1
+    fi
+}
+
+# ============================
+#     ПРОВЕРКА ПРАВ ROOT
+# ============================
+check_root
+
+# ============================
+#   1. НАСТРОЙКА МАРШРУТИЗАЦИИ
+# ============================
+log "Включение IP forwarding"
+sed -i "s/^net.ipv4.ip_forward = 0/net.ipv4.ip_forward = 1/" /etc/net/sysctl.conf
+sysctl -p /etc/net/sysctl.conf >/dev/null 2>&1
+
+# ============================
+#   2. СОЗДАНИЕ LAN-ИНТЕРФЕЙСА
+# ============================
+log "Настройка интерфейса $LAN_IFACE"
+mkdir -p /etc/net/ifaces/"$LAN_IFACE"
+
+if [[ -f /etc/net/ifaces/"$WAN_IFACE"/options ]]; then
+    cp -r /etc/net/ifaces/"$WAN_IFACE"/options /etc/net/ifaces/"$LAN_IFACE"/options
+else
+    err "Файл /etc/net/ifaces/$WAN_IFACE/options не найден, пропускаем копирование"
+fi
+
+echo "$LAN_IP" > /etc/net/ifaces/"$LAN_IFACE"/ipv4address
+
+# ============================
+#   3. НАСТРОЙКА GRE-ТУННЕЛЯ
+# ============================
+log "Настройка GRE-туннеля $TUN_IFACE"
+mkdir -p /etc/net/ifaces/"$TUN_IFACE"
+
+cat > /etc/net/ifaces/"$TUN_IFACE"/options <<EOF
 TYPE=iptun
 TUNTYPE=gre
-TUNLOCAL=172.16.2.2
-TUNREMOTE=172.16.1.2
+TUNLOCAL=$TUN_LOCAL
+TUNREMOTE=$TUN_REMOTE
 TUNTTL=64
 TUNOPTIONS='ttl 64'
-HOST=enp7s1
+HOST=$WAN_IFACE
 EOF
 
-# Файл ipv4address
-echo "10.10.10.2/30" > /etc/net/ifaces/tun0/ipv4address
+echo "$TUN_IP" > /etc/net/ifaces/"$TUN_IFACE"/ipv4address
 
-# Загружаем модуль GRE и перезапускаем сеть
+log "Загрузка модуля GRE"
 modprobe gre
+
+log "Перезапуск сети"
 systemctl restart network
 
-echo "Туннель настроен"
+log "Туннель настроен"
 
-
-# Установка FRR (если не установлен)
+# ============================
+#   4. УСТАНОВКА И НАСТРОЙКА FRR (OSPF)
+# ============================
+log "Установка FRR"
 apt-get install -y frr
 
-# Включение OSPF в /etc/frr/daemons (меняем ospfd=no на ospfd=yes)
-sed -i 's/ospfd=no/ospfd=yes/' /etc/frr/daemons
+log "Включение OSPF-демона"
+sed -i 's/^ospfd=no/ospfd=yes/' /etc/frr/daemons
 
-# Перезагрузка демона и запуск FRR
 systemctl daemon-reload
 systemctl enable --now frr
 
-# Настройка OSPF через vtysh (автоматический ввод команд) МЕНЯЙТЕ НА СВОИ АДРЕСА
-vtysh << 'EOF'
+log "Настройка OSPF через vtysh"
+vtysh <<EOF
 conf
 router ospf
-network 192.168.0.0/28 area 0
-network 10.10.10.0/30 area 0
+network $LAN_NET area 0
+network $TUN_NET area 0
 exit
-int tun0
+int $TUN_IFACE
 ip ospf authentication message-digest
-ip ospf message-digest-key 1 md5 P@ssw0rd
-do wr
+ip ospf message-digest-key 1 md5 $OSPF_KEY
+do write
 exit
 EOF
 
-echo "Настройка OSPF завершена!"
+log "Настройка OSPF завершена"
 
-#ставим NAT 
-apt-get install iptables -y
-iptables -t nat -A POSTROUTING -o enp7s1 -j MASQUERADE 
-iptables -t nat -A PREROUTING -p tcp -d 192.168.0.1 --dport 2027 -j DNAT --to-destination 192.168.0.2:2027
-iptables-save >> /etc/sysconfig/iptables
+# ============================
+#   5. НАСТРОЙКА NAT (iptables)
+# ============================
+log "Установка iptables"
+apt-get install -y iptables
+
+log "Настройка правил NAT / DNAT"
+iptables -t nat -A POSTROUTING -o "$WAN_IFACE" -j MASQUERADE
+iptables -t nat -A PREROUTING -p tcp -d "${LAN_IP%%/*}" --dport "$DNAT_PORT" -j DNAT --to-destination "$DNAT_TARGET"
+
+mkdir -p /etc/sysconfig
+iptables-save > /etc/sysconfig/iptables
+
 systemctl enable --now iptables
 
-# 1. Создание пользователя net_admin (ЛИБО ДРУГОГО ПОЛЬЗОВАТЕЛЯ, ПРИ СМЕНЕ ПОМЕНЯТЬ В ЭТОМ ФАЙЛЕ ИМЯ И Т.Д)
-useradd -m net_admin
+# ============================
+#   6. СОЗДАНИЕ ПОЛЬЗОВАТЕЛЯ
+# ============================
+log "Создание пользователя $NEW_USER"
+if id "$NEW_USER" &>/dev/null; then
+    err "Пользователь $NEW_USER уже существует, пропускаем создание"
+else
+    useradd -m "$NEW_USER"
+    echo "$NEW_USER:$NEW_USER_PASS" | chpasswd
+    gpasswd -a "$NEW_USER" wheel
+    echo "$NEW_USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+fi
 
-# 2. Установка пароля P@$$word (без подтверждения)
-echo "net_admin:P@ssw0rd" | chpasswd
+# ============================
+#   7. НАСТРОЙКА SSH
+# ============================
+log "Настройка SSH (порт $SSH_PORT, запрет root)"
+sed -i "s/^#Port 22/Port $SSH_PORT/" /etc/openssh/sshd_config
+sed -i "s/^#PermitRootLogin without-password/PermitRootLogin no/" /etc/openssh/sshd_config
 
-# 3. Добавление в группу wheel
-gpasswd -a net_admin wheel
-
-# 4. Настройка sudo без пароля
-echo "net_admin ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
-# 5. Настройка SSH (порт 2027 и запрет root-логина)
-sed -i 's/#Port 22/Port 2027/' /etc/openssh/sshd_config
-sed -i 's/#PermitRootLogin without-password/PermitRootLogin no/' /etc/openssh/sshd_config
-
-# 6. Перезапуск SSH
 systemctl restart sshd
 
-echo "Готово! Пользователь net_admin создан, SSH настроен на порт 2027."
+log "Готово! Пользователь $NEW_USER создан, SSH настроен на порт $SSH_PORT"
 
-#Проверка туннеля
-ping 10.10.10.1
+# ============================
+#   8. ПРОВЕРКИ
+# ============================
+log "Проверка туннеля (пинг ${TUN_NET%.*}.1)"
+ping -c 3 10.10.10.1 || err "Туннель не отвечает"
 
-#Проверка OSPF
-ping 192.168.100.1
+log "Проверка OSPF (пинг 192.168.100.1)"
+ping -c 3 192.168.100.1 || err "OSPF-маршрут не отвечает"
 
-
-
-echo "Готово! ."
+log "Скрипт полностью завершён"
