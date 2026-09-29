@@ -1,5 +1,6 @@
 #!/bin/bash
 
+hostnamectl set-hostname br-srv;exec bash
 
 apt-get update && apt-get install -y chrony tzdata
 
