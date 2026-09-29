@@ -2,7 +2,8 @@
 
 hostnamectl set-hostname hq-cli;exec bash
 cat <<EOF> /etc/sysconfig/network
-HOSTNAME=hq-cli.au-team.irpo EOF
+HOSTNAME=hq-cli.au-team.irpo
+EOF
 
 apt-get update && apt-get install -y chrony tzdata
 
