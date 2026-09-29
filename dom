@@ -1,2 +1,3 @@
 cat <<EOF > /etc/sysconfig/network
+HOSTNAME=hq-cli.au-team.irpo
 EOF
