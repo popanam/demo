@@ -1,0 +1,10 @@
+#br-rtr
+iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+iptables -t nat -A PREROUTING -i enp7s1 -p tcp --dport 8080 -j DNAT --to-destination 192.168.0.2:8080
+iptables -t nat -A PREROUTING -i enp7s1 -p tcp --dport 2027 -j DNAT --to-destination 192.168.0.2:2027
+iptables-save > /etc/sysconfig/iptables
+#hq-rtr
+iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
+iptables -t nat -A PREROUTING -i enp7s1 -p tcp --dport 8080 -j DNAT --to-destination 192.168.100.2:80
+iptables -t nat -A PREROUTING -i enp7s1 -p tcp --dport 2027 -j DNAT --to-destination 192.168.100.2:2027
+iptables-save > /etc/sysconfig/iptables
