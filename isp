@@ -2,7 +2,9 @@
 #!/bin/bash
 
 # Настройка hostname
-hostnamectl set-hostname isp.au-team.irpo
+hostnamectl set-hostname isp;exec bash
+cat > /etc/sysconfig/network << EOF
+HOSTNAME=isp.au-team.irpo
 
 
 # Настрока часового пояса
