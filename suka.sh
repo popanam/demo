@@ -1,8 +1,6 @@
 #!/bin/bash
 # Настройка hostname
-hostnamectl set-hostname br-rtr;exec bash
-cat > /etc/sysconfig/network << EOF
-HOSTNAME=br-rtr.au-team.irpo
+
 
 apt-get update && apt-get install -y chrony tzdata
 
