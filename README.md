@@ -1,1 +1,4 @@
 # demo
+chronyc
+docker
+~ansible
