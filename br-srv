@@ -1,6 +1,6 @@
 #!/bin/bash
 
-hostnamectl set-hostname br-srv;exec bash
+hostnamectl set-hostname br-srv;
 
 cat  > /etc/sysconfig/network <<EOF
 NETWORKING=yes
@@ -59,3 +59,6 @@ cd /etc/ansible
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/inventory.yml
 
 ansible -m ping all
+
+
+exec bash
