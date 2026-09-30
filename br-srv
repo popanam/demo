@@ -2,6 +2,13 @@
 
 hostnamectl set-hostname br-srv;exec bash
 
+cat <<EOF > /etc/sysconfig/network
+NETWORKING=yes
+CONFMETHOD=etcnet
+HOSTNAME=br-srv.au-team.irpo
+DOMAINNAME=localdomain
+RESOLV_MODS=yes
+EOF
 apt-get update && apt-get install -y chrony tzdata
 
 
