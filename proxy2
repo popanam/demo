@@ -49,3 +49,11 @@ nginx -t
 systemctl enable --now nginx
 
 systemctl restart nginx
+
+apt-get install -y openssl-gost-engine
+
+control openssl-gost enabled
+
+nginx -t
+
+systemctl restart nginx
