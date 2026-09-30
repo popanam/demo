@@ -1,7 +1,7 @@
 #!/bin/bash
 hostnamectl set-hostname br-rtr;exec bash
 
-cat <<EOF > /etc/sysconfig/network
+cat > /etc/sysconfig/network <<EOF
 NETWORKING=yes
 CONFMETHOD=etcnet
 HOSTNAME=br-rtr.au-team.irpo
