@@ -65,8 +65,9 @@ cd
 cat > /etc/ansible/ansible.cfg << EOF
 [defaults]
 
-inventory = /etc/ansible/hosts
-host_key_cheking = False
+interpreter_python = /usr/bin/python3
+inventory = /etc/ansible/inventory.yml
+host_key_cheking = false
 
 
 [inventory]
