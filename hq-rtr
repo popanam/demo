@@ -1,6 +1,14 @@
 #!/bin/bash
 # Настройка hostname
+hostnamectl set-hostname hq-rtr;exec bash
 
+cat <<EOF > /etc/sysconfig/network
+NETWORKING=yes
+CONFMETHOD=etcnet
+HOSTNAME=hq-rtr.au-team.irpo
+DOMAINNAME=localdomain
+RESOLV_MODS=yes
+EOF
 
 #Создание enp7s2
 mkdir -p /etc/net/ifaces/enp7s2
