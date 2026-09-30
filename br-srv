@@ -2,7 +2,7 @@
 
 hostnamectl set-hostname br-srv;exec bash
 
-cat <<EOF > /etc/sysconfig/network
+cat  > /etc/sysconfig/network <<EOF
 NETWORKING=yes
 CONFMETHOD=etcnet
 HOSTNAME=br-srv.au-team.irpo
