@@ -1,5 +1,5 @@
 #!/bin/bash
-hostnamectl set-hostname hq-srv;exec bash
+hostnamectl set-hostname hq-srv;
 
 cat  > /etc/sysconfig/network <<EOF
 NETWORKING=yes
@@ -112,3 +112,4 @@ cat > /etc/resolv.conf <<EOF
 
 EOF
 chattr +i /etc/resolv.conf
+exec bash
