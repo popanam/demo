@@ -64,6 +64,16 @@ cat > /etc/ansible/ansible/ansible.cfg << EOF
 inventory = /etc/ansible/hosts
 host_key_cheking = False
 
+
+[inventory]
+[privilege_escalation]
+[paramiko_connection]
+[ssh_connection]
+[persistent_connection]
+[accelerate]
+[selinux]
+[colors]
+[diff]
 EOF
 ansible -m ping all
 
