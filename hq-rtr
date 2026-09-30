@@ -2,7 +2,7 @@
 # Настройка hostname
 hostnamectl set-hostname hq-rtr;exec bash
 
-cat  > /etc/sysconfig/network <<EOF
+cat  > /etc/sysconfig/network << EOF
 NETWORKING=yes
 CONFMETHOD=etcnet
 HOSTNAME=hq-rtr.au-team.irpo
