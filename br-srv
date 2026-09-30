@@ -57,7 +57,14 @@ echo "- Скачиваем файл инвентаря"
 apt-get update && apt-get install -y ansible sshpass 
 cd /etc/ansible
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/inventory.yml
+cd
+cat > /etc/ansible/ansible/ansible.cfg << EOF
+[defaults]
 
+inventory = /etc/ansible/hosts
+host_key_cheking = False
+
+EOF
 ansible -m ping all
 
 
