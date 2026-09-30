@@ -57,6 +57,7 @@ echo "- Скачиваем файл инвентаря"
 apt-get update && apt-get install -y ansible sshpass 
 cd /etc/ansible
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/inventory.yml
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/get.yml
 cd
 cat > /etc/ansible/ansible.cfg << EOF
 [defaults]
