@@ -1,10 +1,12 @@
-#===ISP===
-#!/bin/bash
-
-# Настройка hostname
 hostnamectl set-hostname isp;exec bash
-cat > /etc/sysconfig/network << EOF
-HOSTNAME=isp.au-team.irpo
+
+cat <<EOF > /etc/sysconfig/network
+NETWORKING=yes
+CONFMETHOD=etcnet
+HOSTNAME=isp
+DOMAINNAME=localdomain
+RESOLV_MODS=yes
+EOF
 
 
 # Настрока часового пояса
