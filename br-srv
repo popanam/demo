@@ -60,7 +60,7 @@ wget raw.githubusercontent.com/popanam/demo/refs/heads/main/inventory.yml
 
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/get.yml
 
-cd~
+cd ~
 
 cat > /etc/ansible/ansible.cfg << EOF
 [defaults]
