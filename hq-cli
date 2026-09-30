@@ -1,5 +1,5 @@
 #!/bin/bash
-hostnamectl set-hostname hq-cli;exec bash
+hostnamectl set-hostname hq-cli;
 
 cat  > /etc/sysconfig/network <<EOF
 NETWORKING=yes
@@ -63,3 +63,7 @@ echo "- Пользователь: sshuser (пароль: P@ssw0rd)"
 echo "- SSH порт: 2027"
 echo "- Root-логин запрещен"
 echo "- Баннер создан"
+
+
+
+exec bash
