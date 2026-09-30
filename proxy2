@@ -7,7 +7,7 @@ printf '%s\n' \
 $'\tlisten 443 ssl;' \
 $'\tserver_name web.au-team.irpo;' \
 $'\tssl_certificate /etc/nginx/ssl/web.au-team.irpo.cer;' \
-$'\tssl_certificate_key/etc/nginx/ssl/web.au-team.irpo.key;' \
+$'\tssl_certificate_key /etc/nginx/ssl/web.au-team.irpo.key;' \
 $'\tssl_ciphers GOST2012-GOST8912-GOST8912:HIGH:MEDIUM;' \
 $'\tssl_protocols TLSv1 TLSv1.1 TLSv1.2;' \
 $'\tssl_prefer_server_ciphers on;' \
@@ -27,7 +27,7 @@ $'\t}' \
 $'\tlisten 443 ssl;' \
 $'\tserver_name docker.au-team.irpo;' \
 $'\tssl_certificate /etc/nginx/ssl/docker.au-team.irpo.cer;' \
-$'\tssl_certificate_key/etc/nginx/ssl/docker.au-team.irpo.key;' \
+$'\tssl_certificate_key /etc/nginx/ssl/docker.au-team.irpo.key;' \
 $'\tssl_ciphers GOST2012-GOST8912-GOST8912:HIGH:MEDIUM;' \
 $'\tssl_protocols TLSv1 TLSv1.1 TLSv1.2;' \
 $'\tssl_prefer_server_ciphers on;' \
