@@ -1,3 +1,4 @@
+#!/bin/bash
 hostnamectl set-hostname isp;exec bash
 
 cat <<EOF > /etc/sysconfig/network
