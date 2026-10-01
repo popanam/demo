@@ -1,0 +1,10 @@
+#!/bin/bash
+ssh -p 2027 net_admin@192.168.0.1
+yes
+P@ssword
+exit
+
+ssh -p 2027 net_admin@192.168.100.1
+yes
+P@ssword
+exit
