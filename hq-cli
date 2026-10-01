@@ -64,7 +64,7 @@ echo "- SSH порт: 2027"
 echo "- Root-логин запрещен"
 echo "- Баннер создан"
 
-cat > /etc/hosts/ << EOF
+cat > /etc/hosts << EOF
 127.0.0.1 localhost.localdomain localhost
 ::1 localhost6.localdomain localhost6
 172.16.1.1 web.au-team.irpo
