@@ -69,6 +69,7 @@ cat > /etc/hosts << EOF
 ::1 localhost6.localdomain localhost6
 172.16.1.1 web.au-team.irpo
 172.16.2.1 docker.au-team.irpo
+192.168.100.2 hq-srv.au-team.irpo
 EOF
 
 exec bash
