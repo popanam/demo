@@ -20,6 +20,8 @@ timedatectl set-timezone Asia/Krasnoyarsk
 #Chrony
 
 sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g'
+systemctl restart chronyd
+
 
 systemctl enable --now chronyd
         systemctl restart chronyd
