@@ -10,6 +10,13 @@ DOMAINNAME=localdomain
 RESOLV_MODS=yes
 EOF
 
+
+
+#Chrony
+
+sed -i 'pool pool.ntp.org iburst/pool 172.16.1.1 iburst'
+sed -i '
+
 #Создание enp7s2
 mkdir -p /etc/net/ifaces/enp7s2
 cp -r /etc/net/ifaces/enp7s1/options /etc/net/ifaces/enp7s2/options
