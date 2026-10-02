@@ -1,9 +1,0 @@
-ssh -p 2027 sshuser@172.16.1.2
-yes
-P@ssword
-exit
-
-ssh -p 2027 sshuser@172.16.2.2
-yes
-P@ssword
-exit
