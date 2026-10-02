@@ -1,8 +1,0 @@
-#!/bin/bash
-ssh -p 2027 net_admin@192.168.0.1
-
-ssh -p 2027 net_admin@192.168.100.1
-
-ssh -p 2027 sshuser@172.16.1.2
-
-ssh -p 2027 sshuser@172.16.2.2
