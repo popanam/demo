@@ -13,6 +13,10 @@ EOF
 apt-get update && apt-get install -y chrony tzdata
 
 
+
+#Chrony
+
+sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g'
         
 # Настрока часового пояса
 timedatectl set-timezone Asia/Krasnoyarsk
