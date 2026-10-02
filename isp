@@ -17,7 +17,7 @@ apt-get update && apt-get install -y chrony tzdata
 
 sed -i 's/pool pool.ntp.org iburst/local stratum 5/g' /etc/chrony.conf
 sed -i '4 a allow 0/0' /etc/chrony.conf
-sed -i '192.168.0.1 br-rtr.au-team.irpo
+sed -i '192.168.0.1 br-rtr.au-team.irpo' /etc/hosts
 systemctl restart chronyd
 
 # Создаем директории для интерфейсов
