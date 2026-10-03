@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILE="./BR-RTR.sh"
+FILE="./br-rtr"
 
 
 
