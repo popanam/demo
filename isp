@@ -10,8 +10,7 @@ RESOLV_MODS=yes
 EOF
 
 
-# Настрока часового пояса
-apt-get update && apt-get install -y chrony tzdata
+
 
 #Настройка chrony
 
@@ -77,5 +76,11 @@ apt-get update
 
 
 
+#Время
+apt-get update
+apt-get install tzdata
+find /usr/share/zoneinfo -name Krasnoyarsk
+timedatectl set-timezone Asia/Krasnoyarsk
+timedatectl
 
 exec bash
