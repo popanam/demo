@@ -1,6 +1,5 @@
 #!/bin/bash
 hostnamectl set-hostname hq-cli;
-
 cat  > /etc/sysconfig/network <<EOF
 NETWORKING=yes
 CONFMETHOD=etcnet
@@ -10,22 +9,21 @@ RESOLV_MODS=yes
 EOF
 
 
-apt-get update && apt-get install -y chrony tzdata
+#Время
+apt-get update
+apt-get install tzdata
+find /usr/share/zoneinfo -name Krasnoyarsk
+timedatectl set-timezone Asia/Krasnoyarsk
+timedatectl
+
 
 
 
 #Chrony
-
+apt-get update && apt-get install -y chrony tzdata
 sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g'
 systemctl restart chronyd   
 
-# Настрока часового пояса
-timedatectl set-timezone Asia/Krasnoyarsk
-
-
-systemctl enable --now chronyd
-        systemctl restart chronyd
-apt-get update install -y yandex-browser-stable
 
 
 # Монтирование RAID 
@@ -69,6 +67,8 @@ echo "- SSH порт: 2027"
 echo "- Root-логин запрещен"
 echo "- Баннер создан"
 
+
+№Настройка хоста
 cat > /etc/hosts << EOF
 127.0.0.1 localhost.localdomain localhost
 ::1 localhost6.localdomain localhost6
