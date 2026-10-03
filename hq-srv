@@ -9,20 +9,20 @@ DOMAINNAME=localdomain
 RESOLV_MODS=yes
 EOF
 
-apt-get update && apt-get install -y chrony tzdata
+
 
 #Chrony
-
+apt-get update && apt-get install -y chrony tzdata
 sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g'
 systemctl restart chronyd
 
 
-# Настрока часового пояса
+#Время
+apt-get update
+apt-get install tzdata
+find /usr/share/zoneinfo -name Krasnoyarsk
 timedatectl set-timezone Asia/Krasnoyarsk
-
-
-systemctl enable --now chronyd
-        systemctl restart chronyd
+timedatectl
 
 # Установка wget
 apt-get update && apt-get install wget
