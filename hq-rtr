@@ -157,4 +157,12 @@ sed -i 's/#PermitRootLogin without-password/PermitRootLogin no/' /etc/openssh/ss
 systemctl restart sshd
 systemctl enable --now sshd
 echo "Готово! Пользователь net_admin создан, SSH настроен на порт 2027."
+
+
+#Время
+apt-get update
+apt-get install tzdata
+find /usr/share/zoneinfo -name Krasnoyarsk
+timedatectl set-timezone Asia/Krasnoyarsk
+timedatectl
 exec bash
