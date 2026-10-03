@@ -1,10 +1,6 @@
+#Время
 apt-get update
-
 apt-get install tzdata
-
 find /usr/share/zoneinfo -name Krasnoyarsk
-
-
 timedatectl set-timezone Asia/Krasnoyarsk
-
 timedatectl
