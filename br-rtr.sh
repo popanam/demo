@@ -1,4 +1,9 @@
 #!/bin/bash
+
+FILE="./BR-RTR.sh"
+
+
+
 hostnamectl set-hostname br-rtr;
 
 cat > /etc/sysconfig/network <<EOF
