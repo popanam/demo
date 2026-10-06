@@ -94,9 +94,9 @@ ssh -p 2027 net_admin@192.168.0.1
 
 ssh -p 2027 net_admin@192.168.100.1
 
-ssh -p 2027 sshuser@192.168.1.2
+ssh -p 2027 sshuser@192.168.100.2
 
-ssh -p 2027 sshuser@192.168.2.2
+ssh -p 2027 sshuser@192.168.0.2
 
 ssh -p 2027 sshuser@192.168.200.3
 
