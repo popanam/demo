@@ -84,7 +84,10 @@ timedatectl set-timezone Asia/Krasnoyarsk
 timedatectl
 
 
-#resolv.conf
-sed -i 's/nameserver 77.88.8.8/nameserver 192.168.100.2/' /etc/resolv.conf
-sed -i '4 a search au-team.irpo' /etc/resolv.conf
+# Файл /etc/resolv.conf
+cat > /etc/resolv.conf <<EOF
+    nameserver 192.168.100.2
+    search au-team.irpo
+
+EOF
 exec bash
