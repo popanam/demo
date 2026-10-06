@@ -42,9 +42,12 @@ gpasswd -a sshuser wheel
 echo "sshuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 
-#resolv.conf
-sed -i 's/nameserver 77.88.8.8/nameserver 192.168.100.2/' /etc/resolv.conf
-sed -i '3 a search au-team.irpo' /etc/resolv.conf
+# Файл /etc/resolv.conf
+cat > /etc/resolv.conf <<EOF
+    nameserver 192.168.100.2
+    search au-team.irpo
+
+EOF
 
 
 # Настройка SSH
