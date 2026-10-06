@@ -12,7 +12,7 @@ RESOLV_MODS=yes
 EOF
 
 #Chrony
-sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g'
+sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g' /etc/chrony.conf
 systemctl restart chronyd
 
 
