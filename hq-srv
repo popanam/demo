@@ -99,7 +99,7 @@ chown -R 99:99 /raid/nfs
 chmod 777 /raid/nfs
 
 # Добавление экспорта NFS МЕНЯЙТЕ НА СВОИ СЕТИ
-echo "/raid/nfs 192.168.200.0/28(rw,sync,no_subtree_check)" >> /etc/exports
+echo "/raid/nfs 192.168.200.3/28(rw,sync,no_subtree_check)" >> /etc/exports
 
 # Перезапуск NFS и создание тестового файла
 systemctl restart nfs
