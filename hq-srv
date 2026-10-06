@@ -17,6 +17,11 @@ sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g' /etc/chrony.conf
 systemctl restart chronyd
 
 
+#resolv.conf
+sed -i 's/nameserver 77.88.8.8/nameserver 192.168.100.2/' /etc/resolv.conf
+sed -i '3 a search au-team.irpo' /etc/resolv.conf
+
+
 #Время
 apt-get update
 apt-get install tzdata
