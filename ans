@@ -1,2 +1,0 @@
-cd /etc/ansible
-wget raw.githubusercontent.com/popanam/demo/refs/heads/main/get.yml
