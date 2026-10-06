@@ -41,6 +41,12 @@ gpasswd -a sshuser wheel
 # Настройка sudo без пароля
 echo "sshuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+
+#resolv.conf
+sed -i 's/nameserver 77.88.8.8/nameserver 192.168.100.2/' /etc/resolv.conf
+sed -i '3 a search au-team.irpo' /etc/resolv.conf
+
+
 # Настройка SSH
 sed -i 's/#Port 22/Port 2027/' /etc/openssh/sshd_config
 sed -i 's/#PermitRootLogin without-password/PermitRootLogin no/' /etc/openssh/sshd_config
