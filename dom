@@ -1,7 +1,0 @@
-cat > /etc/sysconfig/network <<EOF
-NETWORKING=yes
-CONFMETHOD=etcnet
-HOSTNAME=hq-cli.au-team.irpo
-DOMAINNAME=localdomain
-RESOLV_MODS=yes
-EOF
