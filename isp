@@ -1,5 +1,5 @@
 #!/bin/bash
-hostnamectl set-hostname isp;
+hostnamectl set-hostname isp.au-team.irpo;
 
 cat  > /etc/sysconfig/network <<EOF
 NETWORKING=yes
