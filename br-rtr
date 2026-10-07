@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Имя и доменное имя
-hostnamectl set-hostname br-rtr;
+hostnamectl set-hostname br-rtr.au-team.irpo;
 
 cat > /etc/sysconfig/network <<EOF
 NETWORKING=yes
