@@ -108,6 +108,10 @@ ssh -p 2027 sshuser@192.168.200.3
 ansible -m ping all
 
 
-
+# Файл /etc/resolv.conf
+cat > /etc/resolv.conf << EOF
+nameserver 192.168.100.2
+search au-team.irpo
+EOF
 
 exec bash
