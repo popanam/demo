@@ -9,12 +9,7 @@ RESOLV_MODS=yes
 EOF
 
 
-# Файл /etc/resolv.conf
-cat > /etc/resolv.conf <<EOF
-    nameserver 192.168.100.2
-    search au-team.irpo
 
-EOF
 
 
 
@@ -88,4 +83,9 @@ cat > /etc/hosts << EOF
 192.168.100.2 hq-srv.au-team.irpo
 EOF
 
+
+
+# Файл /etc/resolv.conf
+sed -i 's nameserver 77.88.8.8/    nameserver 192.168.100.2
+    search au-team.irpo/g' /etc/resolv.conf
 exec bash
