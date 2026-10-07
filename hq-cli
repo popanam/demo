@@ -1,5 +1,5 @@
 #!/bin/bash
-hostnamectl set-hostname hq-cli;
+hostnamectl set-hostname hq-cli.au-team.irpp;
 cat  > /etc/sysconfig/network <<EOF
 NETWORKING=yes
 CONFMETHOD=etcnet
