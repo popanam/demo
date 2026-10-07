@@ -1,6 +1,6 @@
 #!/bin/bash
 
-hostnamectl set-hostname br-srv;
+hostnamectl set-hostname br-srv.au-team.irpo;
 
 cat  > /etc/sysconfig/network <<EOF
 NETWORKING=yes
