@@ -85,8 +85,5 @@ EOF
 
 
 
-# Файл /etc/resolv.conf
-sed -i 's/nameserver 77.88.8.8/    nameserver 192.168.100.2
-    search au-team.irpo/g' /etc/resolv.conf
 
 exec bash
