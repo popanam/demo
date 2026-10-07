@@ -1,6 +1,4 @@
 # Файл /etc/resolv.conf
-sed '/^\s*nameserver 77.88.8.8/d' /etc/resolv.conf
-
 cat > /etc/resolv.conf << EOF
 nameserver 192.168.100.2
 search au-team.irpo
