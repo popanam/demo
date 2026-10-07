@@ -173,8 +173,8 @@ timedatectl
 
 # Файл /etc/resolv.conf
 sed -i 's/nameserver 77.88.8.8/nameserver 192.168.100.2/g' /etc/resolv.conf
-cat > /etc/resolv.conf <<EOF
 
+cat > /etc/resolv.conf <<EOF
 search au-team.irpo
 EOF
 
