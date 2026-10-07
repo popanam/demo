@@ -42,12 +42,7 @@ gpasswd -a sshuser wheel
 echo "sshuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 
-# Файл /etc/resolv.conf
-cat > /etc/resolv.conf <<EOF
-    nameserver 192.168.100.2
-    search au-team.irpo
 
-EOF
 
 
 # Настройка SSH
@@ -113,4 +108,8 @@ ssh -p 2027 sshuser@192.168.200.3
 ansible -m ping all
 
 
+
+# Файл /etc/resolv.conf
+sed -i 's nameserver 77.88.8.8/    nameserver 192.168.100.2
+    search au-team.irpo/g' /etc/resolv.conf
 exec bash
