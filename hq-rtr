@@ -1,6 +1,6 @@
 #!/bin/bash
 # Настройка hostname
-hostnamectl set-hostname hq-rtr;
+hostnamectl set-hostname hq-rtr.au-team.irpo;
 
 cat  > /etc/sysconfig/network << EOF
 NETWORKING=yes
