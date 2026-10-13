@@ -1,4 +1,18 @@
 #!/bin/bash
+
+
+
+#сертификаты
+#на hq-srv
+#scp ca.cer user@192.168.200.3:~/
+#на hq-cli
+#vim /etc/openssh/sshd_config и закомментируем Port 2027 и пишим AllowUsers user
+#cp /home/user/ca.cer /etc/pki/ca-trust/source/anchors/ && update-ca-trust
+#cd /home/user/Загрузки/linux-amd64
+#apt-get install -y cryptopro-preinstall
+#./install_gui.sh
+
+
 hostnamectl set-hostname isp.au-team.irpo;
 
 cat  > /etc/sysconfig/network <<EOF
