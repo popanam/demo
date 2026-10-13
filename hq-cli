@@ -84,6 +84,10 @@ cat > /etc/hosts << EOF
 EOF
 
 
-
+#resolv.conf
+cat > /etc/net/ifaces/enp7s1/resolv.conf << EOF
+nemeserver 192.168.100.2
+search au.team.irpo
+EOF
 
 exec bash
