@@ -1,4 +1,14 @@
 #!/bin/bash
+#что нужно установить
+#web
+#cups
+#gost
+#atop
+#fail2ban
+
+
+
+
 hostnamectl set-hostname hq-srv.au-team.irpo;
 
 cat  > /etc/sysconfig/network <<EOF
