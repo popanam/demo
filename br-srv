@@ -1,4 +1,10 @@
 #!/bin/bash
+#что нужно установить
+#docker
+#samba
+#user
+
+
 
 hostnamectl set-hostname br-srv.au-team.irpo;
 
