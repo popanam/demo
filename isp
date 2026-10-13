@@ -1,6 +1,9 @@
 #!/bin/bash
 
-
+#что нужно установить на br-srv
+#docker
+#samba
+#user
 
 #сертификаты
 #на hq-srv
