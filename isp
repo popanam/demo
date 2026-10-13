@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#что нужно установить hq-srv
+#web
+#cups
+#gost
+#atop
+#fail2ban
 #что нужно установить на br-srv
 #docker
 #samba
