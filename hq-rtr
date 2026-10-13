@@ -1,4 +1,8 @@
 #!/bin/bash
+#что нужно установить
+#ipsechq
+
+
 # Настройка hostname
 hostnamectl set-hostname hq-rtr.au-team.irpo;
 
