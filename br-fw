@@ -27,4 +27,10 @@ find /usr/share/zoneinfo -name Krasnoyarsk
 timedatectl set-timezone Asia/Krasnoyarsk
 timedatectl
 
+
+# Файл /resolv.conf
+cat > /etc/net/ifaces/enp7s1/resolv.conf << EOF
+nameserver 192.168.100.2
+search au-team.irpo
+EOF
 exec bash
