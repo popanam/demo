@@ -1,1 +1,10 @@
+#!/bin/bash
 
+#Создание enp7s1
+mkdir -p /etc/net/ifaces/enp7s2
+cp -r /etc/net/ifaces/enp7s1/options /etc/net/ifaces/enp7s2/options
+echo "192.168.0.1/30" > /etc/net/ifaces/enp7s2/ipv4address
+
+
+
+exec bash
