@@ -86,6 +86,7 @@ EOF
 
 #resolv.conf
 cat > /etc/net/ifaces/enp7s1/resolv.conf << EOF
+naneserver 77.88.8.8
 nemeserver 192.168.100.2
 search au.team.irpo
 EOF
