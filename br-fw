@@ -6,5 +6,10 @@ cp -r /etc/net/ifaces/enp7s1/options /etc/net/ifaces/enp7s2/options
 echo "192.168.0.1/30" > /etc/net/ifaces/enp7s2/ipv4address
 
 
+apt-get update
+apt-get install tzdata
+find /usr/share/zoneinfo -name Krasnoyarsk
+timedatectl set-timezone Asia/Krasnoyarsk
+timedatectl
 
 exec bash
