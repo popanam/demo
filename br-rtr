@@ -66,7 +66,7 @@ systemctl enable --now frr
 vtysh << 'EOF'
 conf
 router ospf
-network 192.168.0.0/28 area 0
+network 192.168.1.0/28 area 0
 network 10.10.10.0/30 area 0
 exit
 int tun0
