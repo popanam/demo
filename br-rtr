@@ -11,6 +11,12 @@ DOMAINNAME=localdomain
 RESOLV_MODS=yes
 EOF
 
+#Создание enp7s2
+mkdir -p /etc/net/ifaces/enp7s2
+cp -r /etc/net/ifaces/enp7s1/options /etc/net/ifaces/enp7s2/options
+echo "192.168.1.1/28" > /etc/net/ifaces/enp7s2/ipv4address
+
+
 #Chrony
 sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g' /etc/chrony.conf
 systemctl restart chronyd
