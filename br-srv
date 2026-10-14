@@ -113,6 +113,7 @@ ansible -m ping all
 
 # Файл /etc/net/ifaces/enp7s1/resolv.conf
 cat > /etc/net/ifaces/enp7s1/resolv.conf << EOF
+nameserver 77.88.8.8
 nameserver 192.168.100.2
 search au-team.irpo
 EOF
