@@ -11,12 +11,16 @@ DOMAINNAME=localdomain
 RESOLV_MODS=yes
 EOF
 
+#Chrony
+sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g' /etc/chrony.conf
+systemctl restart chronyd
+
 #Создание enp7s1
 mkdir -p /etc/net/ifaces/enp7s2
 cp -r /etc/net/ifaces/enp7s1/options /etc/net/ifaces/enp7s2/options
 echo "192.168.0.1/30" > /etc/net/ifaces/enp7s2/ipv4address
 
-
+#Время
 apt-get update
 apt-get install tzdata
 find /usr/share/zoneinfo -name Krasnoyarsk
