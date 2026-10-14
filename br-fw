@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# Настройка hostname
+hostnamectl set-hostname br-fw.au-team.irpo;
+
+cat  > /etc/sysconfig/network << EOF
+NETWORKING=yes
+CONFMETHOD=etcnet
+HOSTNAME=br-fw.au-team.irpo
+DOMAINNAME=localdomain
+RESOLV_MODS=yes
+EOF
+
 #Создание enp7s1
 mkdir -p /etc/net/ifaces/enp7s2
 cp -r /etc/net/ifaces/enp7s1/options /etc/net/ifaces/enp7s2/options
