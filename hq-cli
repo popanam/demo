@@ -83,6 +83,8 @@ cat > /etc/hosts << EOF
 192.168.100.2 hq-srv.au-team.irpo
 EOF
 
+mkdir /backup
+
 
 #resolv.conf
 cat > /etc/net/ifaces/enp7s1/resolv.conf << EOF
