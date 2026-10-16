@@ -71,6 +71,9 @@ echo "- Root-логин запрещен"
 echo "- Баннер создан"
 
 
+useradd irpoadmin
+passwd irpoadmin
+
 echo "Настройка RAID"
 # Создание RAID 0 
 mdadm --create --verbose /dev/md0 -l 0 -n 3 /dev/sd[b-d]
@@ -117,5 +120,7 @@ cat > /etc/resolv.conf <<EOF
     search au-team.irpo
 
 EOF
-chattr +i /etc/net/ifaces/enp7s1/resolv.conf
+
+
+
 exec bash
