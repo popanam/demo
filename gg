@@ -3,7 +3,7 @@ wget raw.githubusercontent.com/popanam/demo/refs/heads/main/cups
 chmod +x cups
 ./cups
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/atop
-chmod +x atop p
+chmod +x atop 
 ./atop
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/fail2ban
 chmod +x fail2ban
