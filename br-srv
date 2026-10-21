@@ -111,5 +111,7 @@ wget raw.githubusercontent.com/popanam/demo/refs/heads/main/samba
 chmod +x samba
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/user
 chmod +x user
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/ssh
+chmod +x ssh
 
 exec bash
