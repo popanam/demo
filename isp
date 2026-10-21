@@ -1,16 +1,5 @@
 #!/bin/bash
 
-#что нужно установить hq-srv
-#web
-#cups
-#gost
-#atop
-#fail2ban
-#что нужно установить на br-srv
-#docker
-#samba
-#user
-
 #сертификаты
 #на hq-srv
 #scp ca.cer user@192.168.200.3:~/
@@ -23,6 +12,7 @@
 
 
 #docker exec -it testapp ash
+#vi app/site/site.html
 #href="/static/css/bulma.css"
 
 hostnamectl set-hostname isp.au-team.irpo;
