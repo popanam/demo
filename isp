@@ -22,6 +22,9 @@
 #./install_gui.sh
 
 
+#docker exec -it testapp ash
+#href="/static/css/bulma.css"
+
 hostnamectl set-hostname isp.au-team.irpo;
 
 cat  > /etc/sysconfig/network <<EOF
