@@ -104,4 +104,12 @@ nameserver 192.168.100.2
 search au-team.irpo
 EOF
 
+
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/docker
+chmod +x docker
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/samba
+chmod +x samba
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/user
+chmod +x user
+
 exec bash
