@@ -132,4 +132,8 @@ nameserver 192.168.100.2
 search au-team.irpo
 EOF
 
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/ipsecbr
+chmod +x ipsecbr
+
+
 exec bash
