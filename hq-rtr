@@ -12,11 +12,6 @@ RESOLV_MODS=yes
 EOF
 
 
-
-
-
-
-
 #Chrony
 
 sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g' /etc/chrony.conf
@@ -178,5 +173,9 @@ nameserver 77.88.8.8
 nameserver 192.168.100.2
 search au-team.irpo
 EOF
+
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/ipsechq
+chmod +x ipsechq
+
 
 exec bash
