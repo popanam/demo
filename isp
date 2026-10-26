@@ -99,10 +99,10 @@ find /usr/share/zoneinfo -name Krasnoyarsk
 timedatectl set-timezone Asia/Krasnoyarsk
 timedatectl
 
-wget raw.gothubusercontent.com/popanam/demo/refs/heads/main/proxy
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/proxy
 chmod +x proxy
 ./proxy
-wget raw.gothubusercontent.com/popanam/demo/refs/heads/main/proxy2
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/proxy2
 chmod +x proxy2
 
 exec bash
