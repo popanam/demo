@@ -9,7 +9,7 @@
 #cd /home/user/Загрузки/linux-amd64
 #apt-get install -y cryptopro-preinstall
 #./install_gui.sh
-
+#если ssh забыл при сбросе ~/.ssh/known_hosts
 
 #docker exec -it testapp ash
 #vi app/site/site.html
