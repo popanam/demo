@@ -177,5 +177,7 @@ EOF
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/ipsechq
 chmod +x ipsechq
 
+apt-get install -y figlet
+figlet VLAD DOG
 
 exec bash
