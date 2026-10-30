@@ -135,5 +135,7 @@ EOF
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/ipsecbr
 chmod +x ipsecbr
 
+apt-get install -y figlet
+figlet ALEXEY DIKTATOR
 
 exec bash
