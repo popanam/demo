@@ -126,4 +126,7 @@ EOF
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/gg
 chmod +x gg
 
+
+apt-get install -y figlet
+figlet ALEXEY DIKTATOR
 exec bash
