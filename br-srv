@@ -114,4 +114,6 @@ chmod +x user
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/ssh
 chmod +x ssh
 
+apt-get install -y figlet
+figlet DIMA MEOW
 exec bash
