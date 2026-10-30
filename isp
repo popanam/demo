@@ -105,4 +105,7 @@ chmod +x proxy
 wget raw.githubusercontent.com/popanam/demo/refs/heads/main/proxy2
 chmod +x proxy2
 
+
+apt-get install -y figlet
+figlet DIKTATIR DOG MEOW
 exec bash
