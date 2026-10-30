@@ -128,5 +128,5 @@ chmod +x gg
 
 
 apt-get install -y figlet
-figlet ALEXEY DIKTATOR
+figlet ALEXEY DIKTATOR GAF GAF
 exec bash
