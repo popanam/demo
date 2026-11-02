@@ -1,0 +1,2 @@
+echo "AllowUsers user" > /etc/openssh/sshd_config
+systemctl restart sshd.service
