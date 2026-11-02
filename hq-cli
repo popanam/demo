@@ -11,12 +11,6 @@ RESOLV_MODS=yes
 EOF
 
 
-
-
-
-
-
-
 #Время
 apt-get update
 apt-get install tzdata
@@ -25,13 +19,10 @@ timedatectl set-timezone Asia/Krasnoyarsk
 timedatectl
 
 
-
-
 #Chrony
 apt-get update && apt-get install -y chrony tzdata
 sed -i 's/pool pool.ntp.org iburst/pool 172.16.1.1 iburst/g' /etc/chrony.conf
 systemctl restart chronyd   
-
 
 
 # Монтирование RAID 
@@ -95,6 +86,9 @@ nemeserver 192.168.100.2
 search au.team.irpo
 EOF
 
+
+
 apt-get install -y figlet
 figlet ALEXEY DIKTATOR
+
 exec bash
