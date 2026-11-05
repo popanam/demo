@@ -91,4 +91,7 @@ EOF
 apt-get install -y figlet
 figlet ALEXEY DIKTATOR
 
+systemctl enable --now sshd.service
+systemctl restart sshd.service
+
 exec bash
