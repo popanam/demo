@@ -11,6 +11,11 @@
 #vi app/site/site.html
 #href="/static/css/bulma.css"
 
+
+#hq-srv /etc/exports
+#br-srv /etc/ansible/inventory
+
+
 hostnamectl set-hostname isp.au-team.irpo;
 
 cat  > /etc/sysconfig/network <<EOF
