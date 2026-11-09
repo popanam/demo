@@ -1,0 +1,22 @@
+---
+- name: Базовая настройка серверов и маршрутизаторов
+  hosts:
+    - HQ-SRV
+    - BR-SRV
+    - BR-RTR
+    - HQ-RTR
+  become: true
+
+  tasks:
+    - name: Установка базового набора пакетов
+      ansible.builtin.apt:
+        name:
+          - bash-completion
+          - vim-console
+          - chrony
+          - wget
+          - curl
+          - tzdata
+          - apt-repo
+        state: present
+        update_cache: true
