@@ -33,7 +33,7 @@ EOF
 
 sed -i 's/pool pool.ntp.org iburst/local stratum 5/g' /etc/chrony.conf
 sed -i '4 a allow 0/0' /etc/chrony.conf
-sed -i '5 a hwtimestamp *_' /etc/chrony.conf
+sed -i '5 a hwtimestamp *' /etc/chrony.conf
 sed -i '6 a server 127.0.0.1 iburst prefer minstratum 4' /etc/chrony.conf
 sed -i '192.168.0.1 br-rtr.au-team.irpo' /etc/hosts
 systemctl restart chronyd
