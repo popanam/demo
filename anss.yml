@@ -1,0 +1,21 @@
+---
+- name: Базовая настройка серверов и маршрутизаторов
+  hosts: "HQ-SRV,BR-SRV,BR-RTR,HQ-RTR"
+  become: yes
+
+  tasks:
+    - name: Установить python3-apt для работы модуля apt
+      ansible.builtin.raw: apt-get update && apt-get install -y python3-apt
+
+    - name: Установка базового набора пакетов
+      ansible.builtin.apt:
+        name:
+          - bash-completion
+          - vim-console
+          - chrony
+          - wget
+          - curl
+          - tzdata
+          - apt-repo
+        state: present
+        update_cache: yes
