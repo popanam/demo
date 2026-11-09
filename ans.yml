@@ -1,21 +1,23 @@
 ---
-- name: Базовая настройка серверов и маршрутизаторов
-
-  # Указываем целевые хосты через запятую
-  hosts: "HQ-SRV,BR-SRV,BR-RTR,HQ-RTR"
-
-  become: yes # Обязательно, так как установка пакетов требует прав root
+- name: Install the base packages
+  hosts:
+    - HQ-SRV
+    - BR-SRV
+    - BR-RTR
+    - HQ-RTR
+  become: true
 
   tasks:
-    - name: Установка базового набора пакетов
-      apt:
-        name:
-          - bash-completion
-          - vim-console
-          - chrony
-          - wget
-          - curl
-          - tzdata
-          - apt-repo
+    - name: Install base packages
+      community.general.apt_rpm:
+        name: "{{ item }}"
         state: present
-        update_cache: yes # Обновление кэша apt перед установкой
+        update_cache: true
+      loop:
+        - bash-completion
+        - vim-console
+        - chrony
+        - wget
+        - curl
+        - tzdata
+        - apt-repo
