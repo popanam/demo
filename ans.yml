@@ -1,15 +1,14 @@
 ---
 - name: Базовая настройка серверов и маршрутизаторов
-  hosts:
-    - HQ-SRV
-    - BR-SRV
-    - BR-RTR
-    - HQ-RTR
-  become: true
+
+  # Указываем целевые хосты через запятую
+  hosts: "HQ-SRV,BR-SRV,BR-RTR,HQ-RTR"
+
+  become: yes # Обязательно, так как установка пакетов требует прав root
 
   tasks:
     - name: Установка базового набора пакетов
-      ansible.builtin.apt:
+      apt:
         name:
           - bash-completion
           - vim-console
@@ -19,4 +18,4 @@
           - tzdata
           - apt-repo
         state: present
-        update_cache: true
+        update_cache: yes # Обновление кэша apt перед установкой
