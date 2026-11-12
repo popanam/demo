@@ -1,15 +1,10 @@
 #!/bin/bash
-wget raw.githubusercontent.com/popanam/demo/refs/heads/main/samba
-chmod +x samba
-./samba
-wget raw.githubusercontent.com/popanam/demo/refs/heads/main/user
-chmod +x user
+
+
 ./user
-wget raw.githubusercontent.com/popanam/demo/refs/heads/main/docker
-chmod +x docker
+
 ./docker
-wget raw.githubusercontent.com/popanam/demo/refs/heads/main/ssh
-chmod +x ssh
+
 ./ssh
 
 exec bash
