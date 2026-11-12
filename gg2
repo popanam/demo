@@ -1,14 +1,14 @@
 #!/bin/bash
-wget raw.githubusercontent.com/popanam/demo/refs/heads/main/cups
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/samba
 chmod +x samba
 ./samba
-wget raw.githubusercontent.com/popanam/demo/refs/heads/main/atop
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/user
 chmod +x user
 ./user
-wget raw.githubusercontent.com/popanam/demo/refs/heads/main/fail2ban
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/docker
 chmod +x docker
 ./docker
-wget raw.githubusercontent.com/popanam/demo/refs/heads/main/web
+wget raw.githubusercontent.com/popanam/demo/refs/heads/main/ssh
 chmod +x ssh
 ./ssh
 
