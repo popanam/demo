@@ -94,4 +94,6 @@ figlet ALEXEY DIKTATOR
 systemctl enable --now sshd.service
 systemctl restart sshd.service
 
+
+apt-get install -y yandex-browser-stable
 exec bash
